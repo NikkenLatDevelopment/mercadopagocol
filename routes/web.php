@@ -20,6 +20,8 @@ Route::get('/', function () {
 });
 
 
+
+
 Route::post('/webhook/mercadopago', function (Request $request) {
     $payload = $request->all();
 
