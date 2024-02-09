@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MercadoPagoWebhookController;
+use App\Http\Controllers\MercadoPagoController;
+
 
 //use MercadoPago;
 
@@ -21,3 +23,9 @@ Route::get('/', function () {
 
 
 Route::any('webhooks/mercadopago', [MercadoPagoWebhookController::class, 'handleWebhook']);
+
+/*pago por checkout mercado pago*/
+Route::get('/checkout', [MercadoPagoController::class, 'checkout'])->name('checkout');
+Route::get('/checkout/success', [MercadoPagoController::class, 'success'])->name('checkout.success');
+Route::get('/checkout/failure', [MercadoPagoController::class, 'failure'])->name('checkout.failure');
+Route::get('/checkout/pending', [MercadoPagoController::class, 'pending'])->name('checkout.pending');
