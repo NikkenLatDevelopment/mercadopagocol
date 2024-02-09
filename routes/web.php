@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MercadoPagoWebhookController;
+
 //use MercadoPago;
 
 /*
@@ -17,4 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/webhooks/mercadopago', 'MercadoPagoWebhookController@handleWebhook');
+
+Route::any('webhooks/mercadopago', [MercadoPagoWebhookController::class, 'handleWebhook']);
