@@ -23,6 +23,8 @@ Route::get('/', function () {
 
 
 Route::any('webhooks/mercadopago', [MercadoPagoWebhookController::class, 'handleWebhook']);
+/*vista para logs */
+Route::get('/logs', [MercadoPagoWebhookController::class, 'viewLogs'])->name('logs');
 
 /*pago por checkout mercado pago*/
 Route::get('/checkout', [MercadoPagoController::class, 'checkout'])->name('checkout');
