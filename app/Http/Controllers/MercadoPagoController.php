@@ -28,9 +28,9 @@ class MercadoPagoController extends Controller
 
         // Configura otros detalles según tus necesidades
         $preference->back_urls = [
-            'success' => route('checkout.success'), // URL de éxito
-            'failure' => route('checkout.failure'), // URL de fallo
-            'pending' => route('checkout.pending'), // URL de pendiente
+            'success' => route('success'), // URL de éxito
+            'failure' => route('failure'), // URL de fallo
+            'pending' => route('pending'), // URL de pendiente
         ];
 
         $preference->save();
