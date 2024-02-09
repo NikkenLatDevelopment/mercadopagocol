@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 //use MercadoPago;
 
 /*
@@ -14,5 +13,8 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('/webhooks/mercadopagos', 'MercadoPagoWebhookController@handleWebhook');
+Route::get('/', function () {
+    return view('welcome');
+});
 
+Route::post('/webhooks/mercadopago', 'MercadoPagoWebhookController@handleWebhook');
