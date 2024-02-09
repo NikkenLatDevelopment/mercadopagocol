@@ -28,6 +28,6 @@ Route::get('/logs', [MercadoPagoWebhookController::class, 'viewLogs'])->name('lo
 
 /*pago por checkout mercado pago*/
 Route::get('/checkout', [MercadoPagoController::class, 'checkout'])->name('checkout');
-Route::get('/checkout/success', [MercadoPagoController::class, 'success'])->name('checkout.success');
-Route::get('/checkout/failure', [MercadoPagoController::class, 'failure'])->name('checkout.failure');
-Route::get('/checkout/pending', [MercadoPagoController::class, 'pending'])->name('checkout.pending');
+Route::get('/checkout/success', [MercadoPagoController::class, 'success'])->name('success');
+Route::get('/checkout/failure', [MercadoPagoController::class, 'failure'])->name('failure');
+Route::get('/checkout/pending', [MercadoPagoController::class, 'pending'])->name('pending');
