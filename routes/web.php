@@ -14,5 +14,5 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('/webhooks/mercadopago', 'MercadoPagoWebhookController@handleWebhook');
+Route::post('/webhooks/mercadopagos', 'MercadoPagoWebhookController@handleWebhook');
 
