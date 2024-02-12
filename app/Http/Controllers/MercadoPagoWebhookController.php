@@ -22,11 +22,10 @@ class MercadoPagoWebhookController extends Controller
 
     public function viewLogs()
 {
-    // Obtener el contenido del archivo de logs personalizado
-    $logContent = File::get(storage_path('logs/mercadopago.log'));
-
-    // Mostrar el contenido en una vista
+    /*
+   $logContent = File::get(storage_path('logs/mercadopago.log'));
     return view('logs', ['logContent' => $logContent]);
+    */
 }
 
 }
