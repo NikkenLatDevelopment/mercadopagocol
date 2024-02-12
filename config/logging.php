@@ -54,6 +54,12 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        'custom' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/mercadopago.log'),
+            'level' => 'info',
+        ],
+
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),

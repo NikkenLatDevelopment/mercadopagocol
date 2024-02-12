@@ -18,16 +18,18 @@ class MercadoPagoWebhookController extends Controller
     // Tu lógica para manejar los eventos de MercadoPago aquí
 
     // Guardar la respuesta en el archivo de logs
-    Log::info('Respuesta del webhook de MercadoPago: ' . json_encode($data));
+   // Log::info('Respuesta del webhook de MercadoPago: ' . json_encode($data));
+  // Guardar la respuesta en el archivo de logs personalizado
+  Log::channel('mercadopago')->info('Respuesta del webhook de MercadoPago: ' . json_encode($data));
 
-    // Responder al servidor de MercadoPago con un código 200
-    return response()->json(['status' => 'OK'], 200);
+  // Redirigir a la vista de logs con un mensaje opcional
+  return redirect()->route('logs')->with('message', 'Registro de webhook guardado con éxito');
     }
 
     public function viewLogs()
 {
-    // Obtener el contenido del archivo de logs
-    $logContent = File::get(storage_path('logs/laravel.log'));
+    // Obtener el contenido del archivo de logs personalizado
+    $logContent = File::get(storage_path('logs/mercadopago.log'));
 
     // Mostrar el contenido en una vista
     return view('logs', ['logContent' => $logContent]);
