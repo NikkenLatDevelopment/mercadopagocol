@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::any('webhooks/mercadopago', [MercadoPagoWebhookController::class, 'handleWebhook']);
 /*vista para logs */
-//Route::get('/logs', [MercadoPagoWebhookController::class, 'viewLogs'])->name('logs');
+Route::get('/logs', [MercadoPagoWebhookController::class, 'viewLogs'])->name('logs');
 
 Route::get('logs/mercadopago', function () {
     try {
