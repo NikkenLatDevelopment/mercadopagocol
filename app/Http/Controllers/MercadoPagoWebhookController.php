@@ -22,10 +22,15 @@ class MercadoPagoWebhookController extends Controller
 
     public function viewLogs()
 {
-    /*
-   $logContent = File::get(storage_path('logs/mercadopago.log'));
-    return view('logs', ['logContent' => $logContent]);
-    */
+    
+    try {
+        $logContent = File::get(storage_path('logs/mercadopago.log'));
+        return view('logs', ['logContent' => $logContent]);
+    } catch (\Exception $e) {
+        // Manejo de excepciones
+        return "Error: " . $e->getMessage();
+    }
+    
 }
 
 }
