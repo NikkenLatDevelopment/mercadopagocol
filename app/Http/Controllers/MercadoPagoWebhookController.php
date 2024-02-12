@@ -11,19 +11,13 @@ class MercadoPagoWebhookController extends Controller
 {
     public function handleWebhook(Request $request)
     {
-        // Obtener el evento del webhook
+        
         $data = $request->all();
+        Log::channel('mercadopago')->info('Webhook Response', $data);
+        return response()->json(['success' => true]);
 
-    // Procesar el evento
-    // Tu lógica para manejar los eventos de MercadoPago aquí
 
-    // Guardar la respuesta en el archivo de logs
-   // Log::info('Respuesta del webhook de MercadoPago: ' . json_encode($data));
-  // Guardar la respuesta en el archivo de logs personalizado
-  Log::channel('mercadopago')->info('Respuesta del webhook de MercadoPago: ' . json_encode($data));
 
-  // Redirigir a la vista de logs con un mensaje opcional
-  return redirect()->route('logs')->with('message', 'Registro de webhook guardado con éxito');
     }
 
     public function viewLogs()
