@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MercadoPagoWebhookController;
 use App\Http\Controllers\MercadoPagoController;
-
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 
 //use MercadoPago;
 
@@ -24,7 +25,22 @@ Route::get('/', function () {
 
 Route::any('webhooks/mercadopago', [MercadoPagoWebhookController::class, 'handleWebhook']);
 /*vista para logs */
-Route::get('/logs', [MercadoPagoWebhookController::class, 'viewLogs'])->name('logs');
+//Route::get('/logs', [MercadoPagoWebhookController::class, 'viewLogs'])->name('logs');
+
+Route::get('logs/mercadopago', function () {
+    try {
+        $logContent = File::get(storage_path('logs/mercadopago.log'));
+        return Response::make($logContent, 200, [
+            'Content-Type' => 'text/plain',
+            'Content-Disposition' => 'inline',
+        ]);
+    } catch (\Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+});
+
+
+
 
 /*pago por checkout mercado pago*/
 Route::get('/checkout', [MercadoPagoController::class, 'checkout'])->name('checkout');
