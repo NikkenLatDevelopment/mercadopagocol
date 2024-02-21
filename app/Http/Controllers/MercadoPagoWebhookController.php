@@ -22,13 +22,13 @@ class MercadoPagoWebhookController extends Controller
         /*funcion para log general*/
 
          // Guardar los datos en la base de datos
-   /*
+   
         $webhookLog = new WebhookLog();    
         $webhookLog->payment_method = $data['data']['type'] ?? null; // Puedes ajustar este valor según tus necesidades
         $webhookLog->log_description = 'Webhook Response'; // Puedes ajustar este valor según tus necesidades
         $webhookLog->log_data = Str::limit(json_encode($data), 255); // Limitar la longitud de la cadena a 255 caracteres para SQL Server
         $webhookLog->save();
-*/
+
 
 
         $data = $request->all();
