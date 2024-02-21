@@ -38,7 +38,12 @@ Route::get('logs/mercadopago', function () {
         return "Error: " . $e->getMessage();
     }
 });
+/*Conexion a base de datos */
 
+Route::get('/test-db-connection', function () {
+    $results = DB::select('SELECT * FROM log_payment');
+    return $results;
+});
 
 
 
