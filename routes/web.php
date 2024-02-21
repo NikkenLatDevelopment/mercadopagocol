@@ -43,10 +43,13 @@ Route::get('logs/mercadopago', function () {
 /*Conexion a base de datos */
 
 Route::get('/test-db-connection', function () {
-    $results = DB::select('SELECT * FROM log_payment');
-    return $results;
+    try {
+        $results = DB::select('SELECT * FROM log_payment');
+        return $results;
+    } catch (Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
 });
-
 
 
 /*pago por checkout mercado pago*/
