@@ -42,12 +42,15 @@ Route::get('logs/mercadopago', function () {
 });
 /*Conexion a base de datos */
 
+
+
 Route::get('/test-db-connection', function () {
     try {
+        $conexion = \DB::connection('sqlsrv');
 //        $results = DB::select('SELECT * FROM [LAT_MyNIKKEN_TV_DEV].[dbo].[log_payment]');
         //$results = DB::select('SELECT * FROM LAT_MyNIKKEN_TV_DEV.log_payment');
-        $results = DB::select('SELECT * FROM LAT_MyNIKKEN_TV_DEV.dbo.log_payment');
-
+        $results = $conexion->select('SELECT * FROM LAT_MyNIKKEN_TV_DEV.dbo.log_payment');
+        \DB::disconnect('sqlsrv');
 
        // $results = DB::select('SELECT * FROM log_payment');
         return $results;
