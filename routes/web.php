@@ -45,7 +45,9 @@ Route::get('logs/mercadopago', function () {
 Route::get('/test-db-connection', function () {
     try {
 //        $results = DB::select('SELECT * FROM [LAT_MyNIKKEN_TV_DEV].[dbo].[log_payment]');
-        $results = DB::select('SELECT * FROM LAT_MyNIKKEN_TV_DEV.log_payment');
+        //$results = DB::select('SELECT * FROM LAT_MyNIKKEN_TV_DEV.log_payment');
+        $results = DB::select('SELECT * FROM dbo.log_payment');
+
 
        // $results = DB::select('SELECT * FROM log_payment');
         return $results;
