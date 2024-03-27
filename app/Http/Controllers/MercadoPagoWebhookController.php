@@ -30,6 +30,21 @@ class MercadoPagoWebhookController extends Controller
         $webhookLog->save();
 */
 
+        $webhookData = json_decode($request->getContent(), true);
+        $dataField = json_decode($webhookData['data'], true);
+        $catalogCountryId = 1;
+        $paymentMethod = 'Visa';
+        $conexion = DB::connection('sqlsrv');
+        $conexion->table('LAT_MyNIKKEN_TV_DEV.dbo.log_payment')->insert([
+            'catalog_country_id' => $catalogCountryId,
+            'payment_method' => $paymentMethod,
+            'log_description' => 'charge.creation.succeeded', // O cualquier otra descripción relevante
+            'log_data' => $request->getContent(), // Almacena la respuesta completa del webhook
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        DB::disconnect('sqlsrv');
+
 
         $data = $request->all();
         Log::info('Webhook Response', $data); // Utilizando el logger por defecto
